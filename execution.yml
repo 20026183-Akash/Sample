@@ -8,7 +8,7 @@ execution:
  scenarios:
   Choose Flight:
     requests:
-    -label:balzedemo
+    -label: balzedemo
      method: GET
      -label: reserve
      method: POST

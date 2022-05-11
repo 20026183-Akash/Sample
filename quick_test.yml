@@ -4,7 +4,6 @@ execution:
   hold-for: 5m
   scenario: quick-test
  
- 
 scenarios:
   quick-test:
     requests:

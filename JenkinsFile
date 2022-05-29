@@ -1,4 +1,4 @@
-pipelline {
+pipeline {
   agent{ label 'linux' }
   options {
     buildDiscarder{logRotator(numToKeepStr: '5')
@@ -6,4 +6,35 @@ pipelline {
     parameters {
       string(name: 'APP_NAME', defaultValue: '', description:'what is the heroku app name?')
     }
-    stages 
+    stages {
+        stage('build') {
+            steps{
+                step([$class: 'WsCleanup'])
+                sh 'git clone https://github.com/nrshffxr/fyp.git'
+            }
+        }
+        
+        stage('test') {
+            parallel{
+                stage('Test on Webapp'){
+                     steps{
+                        sh 'python3 -m pytest Sample/test_sample.py --verbose'
+                    }
+                }
+                stage('Test on Container'){
+                    steps{
+                        echo 'This is a test on the container'
+                    }
+                }
+            }
+           
+  
+    }   
+    
+        stage('deploy'){
+            steps{
+                echo 'This is the Deployment Stage'
+            }
+        }
+
+}

@@ -18,7 +18,7 @@ pipeline {
                 }
                 stage('Test on Container'){
                     steps{
-                        echo 'This is a test on the container!!'
+                        echo 'This is a test on the container'
                     }
                 }
             }

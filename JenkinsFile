@@ -25,13 +25,21 @@ pipeline {
            
   
     }   
-    
-        stage('deploy'){
+    	agent { label "linux" }
+	stages{
+        stage('deploy the DOcker Container'){
             steps{
                 
-                echo 'This is the Deployment Stage'
+
+                docker pull tomsik68/xampp
+		docker system prune -af
+		docker build https://github.com/tomsik68/docker-xampp/blob/master/Dockerfile
+		docker run -it -d -p 62030:80 tomsik68/xampp
             }
         }
+	}
 
 }
 }
+
+

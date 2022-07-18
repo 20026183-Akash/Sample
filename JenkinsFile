@@ -1,5 +1,8 @@
 pipeline {
   agent any
+	tools{
+	
+}
   
     stages {
         stage('build1') {
@@ -25,7 +28,15 @@ pipeline {
            
   
     }   
-    	
+	
+    	agent { dockerfile true }
+	stages{
+        stage('deploy the DOcker Container'){
+            steps{
+             	sh 'node --version'
+            }
+        }
+	}
 
 }
 }

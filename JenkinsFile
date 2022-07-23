@@ -1,7 +1,7 @@
 pipeline {
 agent any
 
-       node{
+       node {
     checkout scm
      def customImage = docker.build("Image:${env.BUILD_ID}")
      

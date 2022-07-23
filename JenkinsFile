@@ -1,6 +1,6 @@
 node {
     checkout scm
-     def customImage = docker.build("Image:${env.BUILD_ID}")
+     def customImage = docker.build("Image")
      
     stages {
         stage('build1') {

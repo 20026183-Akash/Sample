@@ -1,8 +1,7 @@
 pipeline {
-  node{
-    checkout scm
-     def customImage = docker.build("Image:${env.BUILD_ID}")
-  }
+agent any
+
+     
     stages {
         stage('build1') {
             steps{
@@ -24,6 +23,12 @@ pipeline {
                     }
                 }
             }
+            
+              node{
+    checkout scm
+     def customImage = docker.build("Image:${env.BUILD_ID}")
+     
+     }
            
   
     }   
